@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * push - push element into the stack
+ * Spush - push element into the stack
  * @stack: stack given by main
  * @value:  take a string input and convert it into an integer
  * @num: store the integer representation of the input string before assigning it to the stack_t
@@ -9,7 +9,7 @@
  * return : void
  */
 
-void push(stack_t *stack, char *value) {
+void Spush(stack_t *stack, char *value) {
 	int num;
 
 	if (!value)
