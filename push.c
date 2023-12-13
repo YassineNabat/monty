@@ -3,24 +3,40 @@
 /**
  * push - push element into the stack
  * @stack: stack given by main
- * @line_number : amount of lines
- * @n : integer value to be pushed onto the stack
+ * @value:  take a string input and convert it into an integer
+ * @num: store the integer representation of the input string before assigning it to the stack_t
  *
  * return : void
  */
 
-void push(stack_t **stack, int n, unsigned int line_number)
-{
-	stack_t *new;
+void push(stack_t *stack, char *value) {
+	int num;
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (!value)
 	{
+		fprintf(stderr, "L%d: usage: push integer\n", global_data.line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	num = atoi(value);
+	if (num == 0 && strcmp(value, "0") != 0)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", global_data.line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	stack_t *node = malloc(sizeof(stack_t));
+	if (node == NULL) {
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n = n;
-	new->next = *stack;
-	*stack = new;
-	return (new);
+
+	node->n = num;
+	node->next = stack;
+	node->prev = NULL;
+
+	if (stack) {
+	stack->prev = node;
+	}
+	stack = node;
 }
