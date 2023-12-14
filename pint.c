@@ -1,22 +1,20 @@
 #include "monty.h"
 
 /**
- * Spint - function that prints the top element on the stack
- * @stack: pointer to head of the stack
- * @line_number: where the instruction appears
+ * pint - prints the top
+ * @stack: stack head
  * 
- * Return: see below
- * 1 if successfull
- * 2 if failed, EXIT_FAILURE
+ * Return: no return
  */
-void Spint(stack_t **stack, unsigned int line_number)
+
+void pint(stack_t **stack) 
 {
-	if (!(*stack))
+	if (!*stack) 
 	{
-		printf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		close(file);
-		free(*stack);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", global_data.line_number);
 		exit(EXIT_FAILURE);
 	}
+
 	printf("%d\n", (*stack)->n);
 }
+
