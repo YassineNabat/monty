@@ -7,7 +7,7 @@
  * Return: no return
  */
 
-void pint(stack_t **stack) 
+void Spint(stack_t **stack) 
 {
 	if (!*stack) 
 	{
